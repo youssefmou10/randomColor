@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Random Color Genreator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>Random Color Generator</h1>
+        <div class="container">
+        </div>
+    
+    </body>
+    <script>
+        // first generate boxes 
+
+        //selectionner container pere 
+        const containerEl=document.querySelector(".container");
+        for(index=0;index<30;index++)
+        {
+            //crrer un element div 
+            const colorContainer=document.createElement("div");
+            colorContainer.classList.add("color-container");
+            containerEl.appendChild(colorContainer);
+        }
+       
+        //slectionner all boxes 
+        const colorContairers = document.querySelectorAll(".color-container");
+        generateColorCode();
+        //generate color code sur box 
+        function generateColorCode(){
+            colorContairers.forEach((colorContainer)=>{
+                const newColorCode=randomColor();
+                colorContainer.style.backgroundColor="#"+newColorCode;
+                colorContainer.innerText="#"+newColorCode;
+            });
+    
+        }
+        // create Color Code 
+        function randomColor(){
+            const char="0123456789abcdef";
+            const colorLength=6;
+            let colorCode="";
+            for(let index=0;index<colorLength;index++)
+            {
+                const randomNum = Math.floor(Math.random()*char.length);
+                colorCode+=char.substring(randomNum,randomNum+1);
+               
+            }
+            return colorCode;
+    
+         
+            
+
+        }
+    </script>
+</html>
